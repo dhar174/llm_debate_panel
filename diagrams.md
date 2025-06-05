@@ -2,9 +2,26 @@
 
 
 ```mermaid
-customers 1---∞ orders ∞---1 products
-    id              id              id
-    name            customer_id     category
-    age_band        product_id      price
-    region          quantity        
+erDiagram
+    CUSTOMERS {
+        int id
+        string name
+        string age_band
+        string region
+    }
+    ORDERS {
+        int id
+        int customer_id
+        int product_id
+        int quantity
+    }
+    PRODUCTS {
+        int id
+        string category
+        number price
+    }
+
+    CUSTOMERS ||--o{ ORDERS     : places
+    ORDERS     }o--|| PRODUCTS   : contains
+ 
 ```
